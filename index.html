@@ -4,77 +4,53 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Venkata Pinnamaneni — Executive Briefing</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink:       #0B0F1A;
-    --deep:      #0F1628;
-    --navy:      #152038;
-    --panel:     #1A2742;
-    --border:    #243351;
-    --gold:      #C9A84C;
-    --gold-dim:  #8B6E2E;
-    --steel:     #4A7FBE;
-    --steel-lt:  #7BAEDD;
-    --text:      #E8EDF5;
-    --muted:     #8896B3;
-    --faint:     #3A4E72;
+    --cream:    #FAF8F3;
+    --paper:    #F3EFE6;
+    --ink:      #1A1612;
+    --navy:     #1C2E4A;
+    --rule:     #C8B89A;
+    --gold:     #9A7B3C;
+    --gold-lt:  #C4A563;
+    --muted:    #6B6055;
+    --faint:    #A89880;
+    --panel:    #EDE8DE;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
-    background: var(--ink);
-    color: var(--text);
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 16px;
-    line-height: 1.7;
-    overflow-x: hidden;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.75;
   }
 
-  /* ── NOISE TEXTURE OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1000;
-    opacity: 0.4;
-  }
-
-  /* ── TOP NAV ── */
+  /* NAV */
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 900;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+    background: var(--cream);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 64px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 60px;
-    background: linear-gradient(to bottom, rgba(11,15,26,0.97), rgba(11,15,26,0));
-    backdrop-filter: blur(8px);
   }
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 14px;
+  .nav-wordmark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
     font-weight: 600;
-    color: var(--gold);
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     text-transform: uppercase;
+    color: var(--navy);
   }
-  .nav-links {
-    display: flex;
-    gap: 36px;
-    list-style: none;
-  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a {
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    font-weight: 400;
-    color: var(--muted);
+    font-size: 10px;
+    color: var(--faint);
     text-decoration: none;
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -82,701 +58,367 @@
   }
   .nav-links a:hover { color: var(--gold); }
 
-  /* ── HERO ── */
+  /* HERO */
   #hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 120px 60px 80px;
-    position: relative;
-    overflow: hidden;
+    padding: 140px 64px 80px;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: end;
   }
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 70% 60% at 80% 50%, rgba(21,32,56,0.9) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 80% at 10% 80%, rgba(74,127,190,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 40% at 90% 20%, rgba(201,168,76,0.06) 0%, transparent 50%);
-  }
-  /* Grid lines */
-  .hero-grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(74,127,190,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(74,127,190,0.04) 1px, transparent 1px);
-    background-size: 80px 80px;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 700px;
-  }
-  .hero-eyebrow {
+  .hero-kicker {
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    font-weight: 400;
-    color: var(--gold);
+    font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    margin-bottom: 24px;
-    opacity: 0;
-    transform: translateY(12px);
-    animation: fadeUp 0.7s ease 0.2s forwards;
-  }
-  .hero-name {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(52px, 7vw, 88px);
-    font-weight: 900;
-    line-height: 1.0;
-    color: var(--text);
-    letter-spacing: -1.5px;
+    color: var(--gold);
     margin-bottom: 20px;
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.8s ease 0.35s forwards;
+    animation: fadeUp 0.6s ease 0.2s forwards;
   }
-  .hero-name em {
-    font-style: italic;
-    color: var(--gold);
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(56px, 7vw, 96px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -2px;
+    color: var(--ink);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.35s forwards;
+  }
+  .hero-name span { color: var(--navy); }
+  .hero-rule {
+    width: 48px; height: 2px;
+    background: var(--gold);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeIn 0.6s ease 0.55s forwards;
   }
   .hero-title {
-    font-family: 'Source Serif 4', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 500;
     font-style: italic;
-    color: var(--steel-lt);
-    margin-bottom: 32px;
+    color: var(--navy);
+    margin-bottom: 0;
     opacity: 0;
-    transform: translateY(16px);
+    animation: fadeUp 0.6s ease 0.6s forwards;
+  }
+  .hero-right {
+    opacity: 0;
     animation: fadeUp 0.7s ease 0.5s forwards;
   }
   .hero-summary {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 300;
     color: var(--muted);
     line-height: 1.85;
-    max-width: 580px;
-    margin-bottom: 44px;
-    opacity: 0;
-    transform: translateY(16px);
-    animation: fadeUp 0.7s ease 0.65s forwards;
+    margin-bottom: 32px;
+    border-left: 2px solid var(--rule);
+    padding-left: 20px;
   }
-  .hero-summary strong { color: var(--text); font-weight: 400; }
-
-  .hero-cta {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    opacity: 0;
-    transform: translateY(12px);
-    animation: fadeUp 0.7s ease 0.8s forwards;
-  }
-  .btn-primary {
-    padding: 13px 32px;
-    background: var(--gold);
-    color: var(--ink);
+  .hero-summary strong { color: var(--ink); font-weight: 600; }
+  .hero-contact {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.25s;
-    border: none;
-    cursor: pointer;
-  }
-  .btn-primary:hover { background: #E2BC60; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
-  .btn-ghost {
-    padding: 13px 32px;
-    background: transparent;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: 1px solid var(--border);
-    transition: all 0.25s;
-  }
-  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
-
-  /* Vertical text on right */
-  .hero-aside {
-    position: absolute;
-    right: 60px;
-    top: 50%;
-    transform: translateY(-50%) rotate(90deg);
-    transform-origin: center center;
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
     color: var(--faint);
-    text-transform: uppercase;
-    white-space: nowrap;
-    opacity: 0;
-    animation: fadeIn 1s ease 1.2s forwards;
+    line-height: 2;
   }
-  .hero-scroll-hint {
-    position: absolute;
-    bottom: 36px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    opacity: 0;
-    animation: fadeIn 1s ease 1.5s forwards;
-  }
-  .scroll-line {
-    width: 1px;
-    height: 48px;
-    background: linear-gradient(to bottom, var(--gold), transparent);
-    animation: scrollPulse 2s ease-in-out infinite;
-  }
-  .scroll-text {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    color: var(--faint);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
+  .hero-contact a { color: var(--gold); text-decoration: none; }
 
-  /* ── METRICS BAND ── */
+  /* METRICS */
   #metrics {
-    background: var(--navy);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 52px 60px;
-  }
-  .metrics-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
+    border-bottom: 1px solid var(--rule);
   }
-  .metric-card {
-    background: var(--navy);
-    padding: 36px 28px;
+  .metric-cell {
+    padding: 40px 24px;
+    border-right: 1px solid var(--rule);
     text-align: center;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.3s;
+    background: var(--cream);
+    transition: background 0.25s;
   }
-  .metric-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--gold);
-    transform: scaleX(0);
-    transition: transform 0.4s ease;
-  }
-  .metric-card:hover::before { transform: scaleX(1); }
-  .metric-card:hover { background: var(--panel); }
-
-  .metric-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 48px;
-    font-weight: 900;
-    color: var(--gold);
+  .metric-cell:last-child { border-right: none; }
+  .metric-cell:hover { background: var(--panel); }
+  .m-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--navy);
     line-height: 1;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
-  .metric-unit {
+  .m-label {
     font-family: 'DM Mono', monospace;
-    font-size: 16px;
-    color: var(--gold-dim);
-  }
-  .metric-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    font-weight: 400;
-    color: var(--muted);
+    font-size: 9px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    margin-top: 8px;
-    line-height: 1.5;
-  }
-  .metric-sublabel {
-    font-size: 11px;
     color: var(--faint);
-    margin-top: 4px;
+    line-height: 1.6;
+    margin-top: 6px;
   }
+  .m-sub { font-size: 11px; color: var(--faint); font-style: italic; margin-top: 3px; }
 
-  /* ── SECTIONS ── */
-  section {
-    padding: 100px 60px;
-  }
-  section:nth-child(even) { background: var(--deep); }
+  /* SECTIONS */
+  section { padding: 88px 64px; }
+  section:nth-child(even) { background: var(--paper); }
 
-  .section-label {
+  .sec-eyebrow {
     font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    font-weight: 400;
-    color: var(--gold);
+    font-size: 9px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
+    color: var(--gold);
+    margin-bottom: 12px;
   }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    max-width: 80px;
-    height: 1px;
-    background: var(--gold-dim);
-  }
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(32px, 4vw, 48px);
+  .sec-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 4vw, 52px);
     font-weight: 700;
-    color: var(--text);
-    line-height: 1.15;
+    color: var(--ink);
+    line-height: 1.1;
     letter-spacing: -0.5px;
     margin-bottom: 48px;
   }
-  .section-title em {
-    font-style: italic;
-    color: var(--steel-lt);
-  }
+  .sec-title em { font-style: italic; color: var(--navy); }
 
-  /* ── CAREER TIMELINE ── */
-  .timeline {
-    position: relative;
-    padding-left: 32px;
-  }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 1px;
-    background: linear-gradient(to bottom, var(--gold), var(--border), transparent);
-  }
+  /* TIMELINE */
+  .timeline { border-top: 1px solid var(--rule); }
   .tl-item {
-    position: relative;
-    margin-bottom: 60px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--rule);
     opacity: 0;
-    transform: translateX(-16px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(12px);
+    transition: all 0.55s ease;
   }
-  .tl-item.visible { opacity: 1; transform: translateX(0); }
-  .tl-dot {
-    position: absolute;
-    left: -38px;
-    top: 8px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--gold);
-    border: 2px solid var(--ink);
-    box-shadow: 0 0 0 4px rgba(201,168,76,0.15);
-  }
-  .tl-item:first-child .tl-dot { width: 16px; height: 16px; left: -40px; box-shadow: 0 0 0 6px rgba(201,168,76,0.2), 0 0 20px rgba(201,168,76,0.3); }
-
-  .tl-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 4px;
-    gap: 16px;
-  }
-  .tl-role {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1.2;
-  }
+  .tl-item.visible { opacity: 1; transform: translateY(0); }
+  .tl-left { padding-top: 4px; }
   .tl-dates {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    color: var(--muted);
-    white-space: nowrap;
-    padding: 3px 10px;
-    border: 1px solid var(--border);
-    flex-shrink: 0;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
   }
-  .tl-company {
-    font-size: 13px;
+  .tl-co {
+    font-size: 12px;
     font-style: italic;
-    color: var(--steel-lt);
-    margin-bottom: 8px;
+    color: var(--faint);
+    line-height: 1.5;
+  }
+  .tl-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 6px;
   }
   .tl-scope {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--muted);
     font-style: italic;
-    border-left: 2px solid var(--gold-dim);
-    padding-left: 14px;
     margin-bottom: 18px;
-    line-height: 1.6;
+    line-height: 1.65;
   }
-  .tl-achievements {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+  .tl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .tl-card {
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    padding: 14px 16px;
+    transition: border-color 0.2s;
   }
-  .achievement {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    padding: 16px 18px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-  .achievement:hover { border-color: var(--gold-dim); transform: translateY(-1px); }
-  .achievement::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px; height: 100%;
-    background: var(--gold);
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-  .achievement:hover::before { opacity: 1; }
-  .achievement strong {
-    display: block;
-    font-family: 'Source Serif 4', serif;
-    font-size: 12px;
+  .tl-card:hover { border-color: var(--gold); }
+  .tl-card strong {
+    font-family: 'Crimson Pro', serif;
+    font-size: 13px;
     font-weight: 600;
-    color: var(--gold);
-    margin-bottom: 4px;
-    letter-spacing: 0.2px;
+    color: var(--navy);
+    display: block;
+    margin-bottom: 3px;
   }
-  .achievement p {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.55;
-  }
+  .tl-card p { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
 
-  /* ── COMPETENCIES ── */
-  .competency-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+  /* COMPETENCIES */
+  .comp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .comp-cell {
+    background: var(--cream);
+    padding: 28px 24px;
+    opacity: 0; transform: translateY(10px);
+    transition: all 0.45s ease;
   }
-  .comp-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    padding: 24px 24px 20px;
-    position: relative;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(16px);
-    transition: all 0.5s ease;
-  }
-  .comp-card.visible { opacity: 1; transform: translateY(0); }
-  .comp-card:hover { border-color: var(--steel); }
+  .comp-cell:hover { background: var(--paper); }
+  .comp-cell.visible { opacity: 1; transform: translateY(0); }
   .comp-num {
     font-family: 'DM Mono', monospace;
-    font-size: 10px;
+    font-size: 9px;
     color: var(--faint);
-    margin-bottom: 12px;
     letter-spacing: 1px;
+    margin-bottom: 10px;
   }
-  .comp-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
-  .comp-body {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-  .comp-accent {
-    position: absolute;
-    bottom: 0; right: 0;
-    width: 60px; height: 60px;
-    background: radial-gradient(circle at 100% 100%, rgba(201,168,76,0.08) 0%, transparent 70%);
-  }
-
-  /* ── INDUSTRY FIT ── */
-  .ameren-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    align-items: start;
-  }
-  .ameren-left p {
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.9;
-    margin-bottom: 20px;
-  }
-  .ameren-left p strong { color: var(--text); font-weight: 400; }
-  .ameren-right {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .fit-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    padding: 20px 22px;
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    opacity: 0;
-    transform: translateX(16px);
-    transition: all 0.5s ease;
-  }
-  .fit-card.visible { opacity: 1; transform: translateX(0); }
-  .fit-icon {
-    width: 36px;
-    height: 36px;
-    background: rgba(201,168,76,0.1);
-    border: 1px solid var(--gold-dim);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    flex-shrink: 0;
-  }
-  .fit-content strong {
-    display: block;
-    font-family: 'Source Serif 4', serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-  .fit-content p {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  /* ── PATENTS ── */
-  .patents-layout {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 48px;
-    align-items: center;
-  }
-  .patent-stat {
-    text-align: center;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    padding: 52px 40px;
-    position: relative;
-  }
-  .patent-stat::before {
-    content: '';
-    position: absolute;
-    inset: 6px;
-    border: 1px solid var(--border);
-    pointer-events: none;
-  }
-  .patent-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 96px;
-    font-weight: 900;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-  .patent-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-  .patent-sub {
-    font-size: 12px;
-    color: var(--faint);
-    margin-top: 16px;
-    font-style: italic;
-  }
-  .patent-text p {
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.9;
-    margin-bottom: 20px;
-  }
-  .patent-text p strong { color: var(--text); font-weight: 400; }
-  .patent-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--gold);
-    text-decoration: none;
-    letter-spacing: 1px;
-    border-bottom: 1px solid var(--gold-dim);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .patent-link:hover { color: #E2BC60; border-color: #E2BC60; }
-
-  /* ── LEADERSHIP PHILOSOPHY ── */
-  .philosophy-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-top: 12px;
-  }
-  .philosophy-card {
-    background: var(--navy);
-    padding: 36px 28px;
-    position: relative;
-    overflow: hidden;
-    cursor: default;
-    transition: background 0.3s;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s;
-  }
-  .philosophy-card.visible { opacity: 1; transform: translateY(0); }
-  .philosophy-card:hover { background: var(--panel); }
-  .phil-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 56px;
-    font-weight: 900;
-    color: var(--border);
-    line-height: 1;
-    margin-bottom: 16px;
-    transition: color 0.3s;
-  }
-  .philosophy-card:hover .phil-number { color: rgba(201,168,76,0.15); }
-  .phil-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 17px;
+  .comp-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
     font-weight: 700;
-    color: var(--text);
-    margin-bottom: 12px;
+    color: var(--navy);
+    margin-bottom: 8px;
     line-height: 1.25;
   }
-  .phil-body {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.7;
-  }
+  .comp-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
-  /* ── CONTACT FOOTER ── */
+  /* INDUSTRY FIT */
+  .fit-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .fit-prose p {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.85;
+    margin-bottom: 20px;
+  }
+  .fit-prose p strong { color: var(--ink); font-weight: 600; }
+  .pull-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--navy);
+    line-height: 1.5;
+    border-top: 2px solid var(--gold);
+    border-bottom: 1px solid var(--rule);
+    padding: 20px 0;
+    margin-top: 24px;
+  }
+  .fit-cards { display: flex; flex-direction: column; gap: 12px; }
+  .fit-row {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 16px 18px;
+    border: 1px solid var(--rule);
+    background: var(--cream);
+    opacity: 0; transform: translateX(12px);
+    transition: all 0.5s ease;
+  }
+  .fit-row.visible { opacity: 1; transform: translateX(0); }
+  .fit-row:hover { border-color: var(--gold-lt); }
+  .fit-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+  .fit-row strong { font-size: 13px; font-weight: 600; color: var(--navy); display: block; margin-bottom: 3px; font-family: 'Crimson Pro', serif; }
+  .fit-row p { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+
+  /* PATENTS */
+  .patent-layout { display: grid; grid-template-columns: 240px 1fr; gap: 56px; align-items: center; }
+  .patent-stat {
+    text-align: center;
+    border: 1px solid var(--rule);
+    padding: 48px 32px;
+    position: relative;
+  }
+  .patent-stat::after {
+    content: '';
+    position: absolute; inset: 5px;
+    border: 1px solid var(--rule);
+    pointer-events: none;
+  }
+  .pat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 88px; font-weight: 700;
+    color: var(--navy); line-height: 1;
+  }
+  .pat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--faint);
+    margin-top: 6px;
+  }
+  .pat-sub { font-size: 12px; color: var(--faint); font-style: italic; margin-top: 12px; }
+  .patent-text p { font-size: 16px; color: var(--muted); line-height: 1.85; margin-bottom: 18px; }
+  .patent-text p strong { color: var(--ink); font-weight: 600; }
+  .pat-link {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--gold); text-decoration: none;
+    border-bottom: 1px solid var(--gold); padding-bottom: 2px;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+  .pat-link:hover { color: var(--gold-lt); }
+
+  /* PHILOSOPHY */
+  .phil-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 12px; }
+  .phil-card {
+    background: var(--cream); padding: 32px 24px;
+    opacity: 0; transform: translateY(12px);
+    transition: all 0.5s ease;
+  }
+  .phil-card:hover { background: var(--paper); }
+  .phil-card.visible { opacity: 1; transform: translateY(0); }
+  .phil-n {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px; font-weight: 700;
+    color: var(--rule); line-height: 1; margin-bottom: 14px;
+  }
+  .phil-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--navy); margin-bottom: 10px; line-height: 1.25;
+  }
+  .phil-body { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  /* FOOTER */
   #contact {
     background: var(--navy);
-    border-top: 1px solid var(--border);
-    padding: 80px 60px;
+    padding: 72px 64px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 40px;
   }
-  .contact-left .cl-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 8px;
+  .cf-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 700;
+    color: var(--cream); margin-bottom: 6px;
   }
-  .contact-left .cl-title {
-    font-size: 14px;
-    font-style: italic;
-    color: var(--muted);
-    margin-bottom: 24px;
+  .cf-title { font-size: 14px; font-style: italic; color: var(--rule); margin-bottom: 24px; }
+  .cf-row {
+    display: flex; gap: 10px;
+    font-family: 'DM Mono', monospace; font-size: 11px; color: var(--faint);
+    margin-bottom: 7px;
   }
-  .contact-items {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  .cf-row .lbl { color: var(--gold-lt); width: 56px; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; }
+  .cf-row a { color: var(--faint); text-decoration: none; transition: color 0.2s; }
+  .cf-row a:hover { color: var(--gold-lt); }
+  .cf-right { text-align: right; }
+  .cf-wm {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 88px; font-weight: 700;
+    color: rgba(255,255,255,0.06); line-height: 1; letter-spacing: -3px;
   }
-  .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--muted);
-  }
-  .contact-item .ci-label {
-    color: var(--gold);
-    width: 56px;
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-  .contact-item a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
-  .contact-item a:hover { color: var(--gold); }
-  .contact-right {
-    text-align: right;
-  }
-  .contact-right .watermark {
-    font-family: 'Playfair Display', serif;
-    font-size: 80px;
-    font-weight: 900;
-    color: var(--border);
-    line-height: 1;
-    letter-spacing: -2px;
-    user-select: none;
-  }
-  .contact-right .tagline {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--faint);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-top: 12px;
+  .cf-tag {
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    color: rgba(255,255,255,0.2); letter-spacing: 2px;
+    text-transform: uppercase; margin-top: 8px;
   }
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    to { opacity: 1; }
-  }
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.4; transform: scaleY(1); }
-    50% { opacity: 1; transform: scaleY(1.1); }
-  }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { to { opacity: 1; } }
 
-  /* ── DIVIDER ── */
-  .gold-rule {
-    width: 48px;
-    height: 2px;
-    background: var(--gold);
-    margin-bottom: 32px;
-  }
-
-  /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    nav { padding: 16px 24px; }
+    nav { padding: 14px 24px; }
     .nav-links { display: none; }
-    #hero { padding: 100px 24px 60px; }
-    section { padding: 72px 24px; }
-    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-    .tl-achievements { grid-template-columns: 1fr; }
-    .competency-grid { grid-template-columns: 1fr 1fr; }
-    .ameren-grid { grid-template-columns: 1fr; }
-    .patents-layout { grid-template-columns: 1fr; }
-    .philosophy-grid { grid-template-columns: 1fr 1fr; }
-    #contact { flex-direction: column; align-items: flex-start; }
-    .hero-aside { display: none; }
+    #hero { grid-template-columns: 1fr; padding: 100px 24px 48px; gap: 32px; }
+    #metrics { grid-template-columns: repeat(2,1fr); }
+    section { padding: 64px 24px; }
+    .tl-item { grid-template-columns: 1fr; gap: 8px; }
+    .tl-grid { grid-template-columns: 1fr; }
+    .comp-grid, .fit-cols, .patent-layout, .phil-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
 <nav>
-  <div class="nav-logo">VP · Executive Briefing</div>
+  <div class="nav-wordmark">Venkata Pinnamaneni</div>
   <ul class="nav-links">
     <li><a href="#career">Career</a></li>
     <li><a href="#competencies">Expertise</a></li>
@@ -786,426 +428,222 @@
   </ul>
 </nav>
 
-<!-- ── HERO ── -->
-<section id="hero" style="padding-top:0; padding-bottom:0;">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">Executive Briefing · Technology Executive · St. Louis, MO</div>
-    <h1 class="hero-name">Venkata<br><em>Pinnamaneni</em></h1>
-    <p class="hero-title">Technology Visionary · Transformation Architect · Enterprise Leader</p>
+<section id="hero" style="padding-top:140px; padding-bottom:80px;">
+  <div>
+    <div class="hero-kicker">Executive Briefing · Technology Executive · St. Louis, MO</div>
+    <h1 class="hero-name">Venkata<br><span>Pinnamaneni</span></h1>
+    <div class="hero-rule"></div>
+    <p class="hero-title">Technology Visionary &nbsp;·&nbsp; Transformation Architect &nbsp;·&nbsp; Enterprise Leader</p>
+  </div>
+  <div class="hero-right">
     <p class="hero-summary">
       <strong>20+ years</strong> driving digital transformation, platform modernization, and AI enablement within the world's most demanding regulated environments. Currently EVP & CTO at Mastercard, steering a <strong>$3B business unit</strong> and 700+ global engineers toward a future defined by Cloud-Native architecture, data intelligence, and responsible AI.
     </p>
-    <div class="hero-cta">
-      <a href="#career" class="btn-primary">View Career Briefing</a>
-      <a href="#contact" class="btn-ghost">Get In Touch</a>
+    <div class="hero-contact">
+      <div>St. Louis, Missouri &nbsp;·&nbsp; 636-793-2696</div>
+      <div><a href="mailto:sivajee@gmail.com">sivajee@gmail.com</a></div>
+      <div><a href="https://linkedin.com/in/venkata-pinnamaneni" target="_blank">linkedin.com/in/venkata-pinnamaneni</a></div>
     </div>
-  </div>
-  <div class="hero-aside">Mastercard · 20 Years · St. Louis, MO · 10 Patents</div>
-  <div class="hero-scroll-hint">
-    <div class="scroll-line"></div>
-    <span class="scroll-text">Scroll</span>
   </div>
 </section>
 
-<!-- ── METRICS ── -->
 <div id="metrics">
-  <div class="metrics-grid">
-    <div class="metric-card">
-      <div class="metric-number"><span class="count" data-target="3" data-prefix="$" data-suffix="B">0</span></div>
-      <div class="metric-label">P&L Scope<br>Under Leadership</div>
-      <div class="metric-sublabel">Current Business Unit</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-number"><span class="count" data-target="700" data-suffix="+">0</span></div>
-      <div class="metric-label">Global Engineers<br>Directly Led</div>
-      <div class="metric-sublabel">+ 1,480 at previous scale</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-number"><span class="count" data-target="40" data-prefix="$" data-suffix="M">0</span></div>
-      <div class="metric-label">Annual OpEx<br>Savings Projected</div>
-      <div class="metric-sublabel">Platform modernization</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-number"><span class="count" data-target="4" data-suffix="M+">0</span></div>
-      <div class="metric-label">Daily Transactions<br>Per Hub Enabled</div>
-      <div class="metric-sublabel">National payment infrastructure</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-number"><span class="count" data-target="10">0</span></div>
-      <div class="metric-label">U.S. Patents<br>Granted</div>
-      <div class="metric-sublabel">4 additional under review</div>
-    </div>
+  <div class="metric-cell">
+    <div class="m-number"><span class="count" data-target="3" data-prefix="$" data-suffix="B">0</span></div>
+    <div class="m-label">P&L Scope<br>Under Leadership</div>
+    <div class="m-sub">Current business unit</div>
+  </div>
+  <div class="metric-cell">
+    <div class="m-number"><span class="count" data-target="700" data-suffix="+">0</span></div>
+    <div class="m-label">Global Engineers<br>Directly Led</div>
+    <div class="m-sub">+ 1,480 at prior scale</div>
+  </div>
+  <div class="metric-cell">
+    <div class="m-number"><span class="count" data-target="40" data-prefix="$" data-suffix="M">0</span></div>
+    <div class="m-label">Annual OpEx<br>Savings Projected</div>
+    <div class="m-sub">Platform modernization</div>
+  </div>
+  <div class="metric-cell">
+    <div class="m-number"><span class="count" data-target="280" data-prefix="$" data-suffix="M">0</span></div>
+    <div class="m-label">P&amp;E Budget Stewardship</div>
+    <div class="m-sub">Global product &amp; engineering teams</div>
+  </div>
+  <div class="metric-cell">
+    <div class="m-number"><span class="count" data-target="10">0</span></div>
+    <div class="m-label">U.S. Patents<br>Granted</div>
+    <div class="m-sub">4 additional under review</div>
   </div>
 </div>
 
-<!-- ── CAREER ── -->
 <section id="career">
-  <div class="section-label">Career Trajectory</div>
-  <h2 class="section-title">Two Decades at the<br><em>Edge of Enterprise Technology</em></h2>
-
+  <div class="sec-eyebrow">Career Trajectory</div>
+  <h2 class="sec-title">Two Decades at the<br><em>Edge of Enterprise Technology</em></h2>
   <div class="timeline">
-
     <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-header">
-        <div class="tl-role">Executive Vice President &amp; Chief Technology Officer</div>
+      <div class="tl-left">
         <div class="tl-dates">2024 — Present</div>
+        <div class="tl-co">Mastercard · Business & Market Insights · $3B Division · 700+ Engineers</div>
       </div>
-      <div class="tl-company">Mastercard · Business &amp; Market Insights · $3B Division · 700+ Engineers</div>
-      <div class="tl-scope">Steering global technology strategy and engineering execution for a $3B business unit with a mandate to double revenue to $6B by 2030. Sole accountability for all technology investments, regulatory compliance, and cross-functional alignment across Business, Finance, and Regional leadership.</div>
-      <div class="tl-achievements">
-        <div class="achievement">
-          <strong>Platform Modernization</strong>
-          <p>Spearheading 3-year transformation from legacy monolithic platform to Cloud-Native, API-first, Data Lakehouse ecosystem — improving scalability, reliability, and time-to-value for global enterprise clients.</p>
-        </div>
-        <div class="achievement">
-          <strong>$40M OpEx Reduction</strong>
-          <p>Driving projected $40M in annual enterprise cost savings while unlocking new top-line revenue streams through modular, localized platform deployments and faster market delivery.</p>
-        </div>
-        <div class="achievement">
-          <strong>AI Integration</strong>
-          <p>Embedding AI capabilities across customer-facing products and internal engineering lifecycles. Productivity measured against DORA and SPACE industry metrics.</p>
-        </div>
-        <div class="achievement">
-          <strong>M&amp;A Integration</strong>
-          <p>Led strategic integration of acquired engineering team via open-contribution model, unifying cultures and practices into a "One Mastercard" high-performance organization.</p>
-        </div>
-        <div class="achievement">
-          <strong>Next-Gen Customer Access</strong>
-          <p>Enabling API, Agentic, MCP, and Portal consumption channels for global clients — directly expanding market reach and competitive positioning.</p>
-        </div>
-        <div class="achievement">
-          <strong>Cybersecurity &amp; Vendor Strategy</strong>
-          <p>Stewarding enterprise-wide risk posture and driving vendor cost rationalization programs across global regulated markets.</p>
+      <div>
+        <div class="tl-role">Executive Vice President &amp; Chief Technology Officer</div>
+        <div class="tl-scope">Steering global technology strategy and engineering execution for a $3B business unit with a mandate to double revenue to $6B by 2030. Sole accountability for all technology investments, regulatory compliance, and cross-functional alignment.</div>
+        <div class="tl-grid">
+          <div class="tl-card"><strong>Platform Modernization</strong><p>3-year transformation from legacy monolith to Cloud-Native, API-first, Data Lakehouse ecosystem — improving scalability, reliability, and time-to-value for global clients.</p></div>
+          <div class="tl-card"><strong>OpEx Optimization</strong><p>Delivering enterprise-wide OpEx optimization through platform consolidation, vendor rationalization, and engineering productivity improvements across a $3B portfolio.</p></div>
+          <div class="tl-card"><strong>AI Integration</strong><p>Embedding AI across customer-facing products and engineering lifecycles. Productivity tracked against DORA and SPACE industry benchmarks.</p></div>
+          <div class="tl-card"><strong>M&A Integration</strong><p>Led acquired team integration via open-contribution model, unifying cultures into a high-performance "One Mastercard" organization.</p></div>
+          <div class="tl-card"><strong>Next-Gen Access</strong><p>Enabling API, Agentic, MCP, and Portal channels for global enterprise clients — expanding market reach and competitive positioning.</p></div>
+          <div class="tl-card"><strong>Enterprise Risk &amp; Vendor Management</strong><p>$125M enterprise spend optimization through disciplined vendor rationalization, risk governance, and strategic sourcing across global regulated markets.</p></div>
         </div>
       </div>
     </div>
-
     <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-header">
-        <div class="tl-role">Senior Vice President, Business Operations &amp; Technology</div>
+      <div class="tl-left">
         <div class="tl-dates">2019 — 2024</div>
+        <div class="tl-co">Mastercard · Global Products & Technology · $152M · 1,480+ Team · 48 Business Lines</div>
       </div>
-      <div class="tl-company">Mastercard · Global Products &amp; Technology · $152M Budget · 1,480+ Team · 48 Business Lines</div>
-      <div class="tl-scope">Direct oversight of technology operations spanning digital, fintech, commercial, payments processing, data &amp; services, and cyber &amp; intelligence globally. Full budget accountability and cross-functional leadership across one of the world's most regulated payment networks.</div>
-      <div class="tl-achievements">
-        <div class="achievement">
-          <strong>SRE Transformation</strong>
-          <p>Led comprehensive shift from traditional operations to Site Reliability Engineering framework — ensuring high availability across billions of daily payment transactions without failure.</p>
-        </div>
-        <div class="achievement">
-          <strong>National Payment Infrastructure</strong>
-          <p>Pioneered setup and stabilization of NPI in Egypt, Philippines, Peru, and regional hubs — enabling 4M+ daily P2P, P2M, and A2A transactions per hub on Mastercard network rails.</p>
-        </div>
-        <div class="achievement">
-          <strong>Risk &amp; Governance</strong>
-          <p>Accountable for enterprise-wide technology risk strategy across all programs, with governance frameworks that improved transparency, audit readiness, and risk prioritization at scale.</p>
-        </div>
-        <div class="achievement">
-          <strong>M&amp;A &amp; Global Compliance</strong>
-          <p>Successfully integrated multiple acquisitions into the Mastercard ecosystem, deploying compliant systems across EU and India jurisdictions to meet local regulatory requirements.</p>
+      <div>
+        <div class="tl-role">Senior Vice President, Business Operations &amp; Technology</div>
+        <div class="tl-scope">Direct oversight across digital, fintech, commercial, payments processing, data & services, and cyber & intelligence globally. Full budget accountability across the world's most regulated payment network.</div>
+        <div class="tl-grid">
+          <div class="tl-card"><strong>SRE Transformation</strong><p>Led shift to Site Reliability Engineering — ensuring high availability across billions of daily payment transactions without failure.</p></div>
+          <div class="tl-card"><strong>Critical National Payment Infrastructure</strong><p>Supported the launch of NPI in Egypt, Philippines, and Peru — networks that scaled to 10M+ daily transactions per hub on Mastercard rails.</p></div>
+          <div class="tl-card"><strong>Risk & Governance</strong><p>Enterprise-wide technology risk strategy across all programs, improving transparency and audit readiness globally.</p></div>
+          <div class="tl-card"><strong>M&A & Compliance</strong><p>Integrated acquisitions across EU and India with full local regulatory compliance.</p></div>
         </div>
       </div>
     </div>
-
     <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-header">
-        <div class="tl-role">Vice President, Strategic Program Management</div>
+      <div class="tl-left">
         <div class="tl-dates">2017 — 2018</div>
+        <div class="tl-co">Mastercard · Payment Transaction Services · 40-Person Global Team</div>
       </div>
-      <div class="tl-company">Mastercard · Payment Transaction Services · 40-Person Global Team</div>
-      <div class="tl-scope">Led global program management driving SAFe transformations, legacy modernization, and enterprise governance for high-profile digital payment initiatives across multiple geographies.</div>
-      <div class="tl-achievements">
-        <div class="achievement">
-          <strong>Emirates Digital Wallet</strong>
-          <p>Devised program governance model delivering full budget alignment, progress tracking, and stakeholder transparency across a complex multi-country digital wallet deployment.</p>
-        </div>
-        <div class="achievement">
-          <strong>India Market Launch</strong>
-          <p>Delivered Airtel Payments Bank migration and India's first issuing client on a localized processing platform — enabling regulatory compliance and national market scale.</p>
+      <div>
+        <div class="tl-role">Vice President, Strategic Program Management</div>
+        <div class="tl-scope">Led global program management driving SAFe transformations, legacy modernization, and enterprise governance for high-profile digital payment initiatives.</div>
+        <div class="tl-grid">
+          <div class="tl-card"><strong>Emirates Digital Wallet</strong><p>Program governance model delivering full budget alignment and multi-country stakeholder transparency.</p></div>
+          <div class="tl-card"><strong>India Market Launch</strong><p>Airtel Payments Bank migration and first issuing client on India's localized processing platform.</p></div>
         </div>
       </div>
     </div>
-
     <div class="tl-item">
-      <div class="tl-dot" style="width:10px;height:10px;left:-37px;background:var(--faint);box-shadow:none;"></div>
-      <div class="tl-header">
-        <div class="tl-role" style="font-size:16px; color:var(--muted);">Director, Enterprise Architecture &nbsp;·&nbsp; Senior Consultant, Database Engineering</div>
+      <div class="tl-left">
         <div class="tl-dates">2007 — 2017</div>
+        <div class="tl-co">Mastercard · Sree InfoTech LLC</div>
       </div>
-      <div class="tl-company">Mastercard · Sree InfoTech LLC</div>
-      <div class="tl-scope">Foundation of technical depth across enterprise architecture, database engineering, and systems design — building the platform expertise that underpins 20 years of leadership at one of the world's largest payment networks.</div>
+      <div>
+        <div class="tl-role" style="font-size:18px; color:var(--muted);">Director, Enterprise Architecture &nbsp;·&nbsp; Senior Consultant, Database Engineering</div>
+        <div class="tl-scope">Foundation of technical depth across enterprise architecture, database engineering, and systems design at one of the world's largest payment networks.</div>
+      </div>
     </div>
-
   </div>
 </section>
 
-<!-- ── COMPETENCIES ── -->
 <section id="competencies">
-  <div class="section-label">Core Expertise</div>
-  <h2 class="section-title">Where Technology Meets<br><em>Business Outcomes</em></h2>
-  <div class="competency-grid">
-    <div class="comp-card">
-      <div class="comp-num">01</div>
-      <div class="comp-title">Enterprise IT Strategy &amp; Modernization</div>
-      <div class="comp-body">Translating long-range business vision into executable technology roadmaps. Experience modernizing legacy monolithic platforms at scale while maintaining operational continuity across billions of transactions.</div>
-      <div class="comp-accent"></div>
-    </div>
-    <div class="comp-card">
-      <div class="comp-num">02</div>
-      <div class="comp-title">AI Enablement — Products &amp; Tools</div>
-      <div class="comp-body">Deploying artificial intelligence responsibly across customer-facing products and internal engineering workflows. A consistent record of moving beyond AI strategy into measurable gains in productivity, quality, and speed-to-market.</div>
-      <div class="comp-accent"></div>
-    </div>
-    <div class="comp-card">
-      <div class="comp-num">03</div>
-      <div class="comp-title">High-Availability &amp; Resilient Systems</div>
-      <div class="comp-body">Deep SRE expertise ensuring mission-critical infrastructure operates without failure at global scale. Experience leading operational frameworks where downtime is measured in fractions of a second — not minutes.</div>
-      <div class="comp-accent"></div>
-    </div>
-    <div class="comp-card">
-      <div class="comp-num">04</div>
-      <div class="comp-title">Data Insights &amp; Analytics</div>
-      <div class="comp-body">Designing data platforms that transform raw operational signals into actionable intelligence. Governance frameworks that make data trustworthy, accessible, and decision-ready — in real time, at enterprise scale.</div>
-      <div class="comp-accent"></div>
-    </div>
-    <div class="comp-card">
-      <div class="comp-num">05</div>
-      <div class="comp-title">Financial &amp; Risk Stewardship</div>
-      <div class="comp-body">Proven management of multi-hundred-million-dollar CapEx/OpEx portfolios with transparent ROI reporting. Skilled at communicating risk-reward tradeoffs to CFOs, boards, and regulators in plain business terms.</div>
-      <div class="comp-accent"></div>
-    </div>
-    <div class="comp-card">
-      <div class="comp-num">06</div>
-      <div class="comp-title">Regulatory Compliance &amp; Security</div>
-      <div class="comp-body">Two decades embedded in PCI-DSS, GDPR, and multi-jurisdictional compliance environments across four continents. Enterprise security postures built to withstand rigorous audits and protect sensitive data at global scale — without slowing the business down.</div>
-      <div class="comp-accent"></div>
-    </div>
-    <div class="comp-card">
-      <div class="comp-num">07</div>
-      <div class="comp-title">Culture, Talent &amp; Organizational Leadership</div>
-      <div class="comp-body">Built high-performing engineering teams across three continents. Recognized for M&amp;A cultural integration, leadership pipeline development, and creating environments where technical talent delivers at their best.</div>
-      <div class="comp-accent"></div>
-    </div>
-    <div class="comp-card">
-      <div class="comp-num">08</div>
-      <div class="comp-title">Legacy Modernization &amp; Build vs. Buy</div>
-      <div class="comp-body">Disciplined evaluation of in-house development versus vendor partnership. Experience transitioning complex legacy systems without disruption to the business, with full stakeholder transparency at every stage.</div>
-      <div class="comp-accent"></div>
-    </div>
-    <div class="comp-card">
-      <div class="comp-num">09</div>
-      <div class="comp-title">M&amp;A Integration &amp; Change Leadership</div>
-      <div class="comp-body">Multiple M&amp;A integrations across global markets — from technical platform consolidation to cultural alignment. Energizes organizations through uncertainty by creating clarity, accountability, and shared purpose.</div>
-      <div class="comp-accent"></div>
-    </div>
+  <div class="sec-eyebrow">Core Expertise</div>
+  <h2 class="sec-title">Where Technology Meets<br><em>Business Outcomes</em></h2>
+  <div class="comp-grid">
+    <div class="comp-cell"><div class="comp-num">01</div><div class="comp-name">Enterprise IT Strategy &amp; Modernization</div><div class="comp-desc">Translating long-range business vision into executable technology roadmaps. Experience modernizing legacy platforms at scale while maintaining operational continuity across billions of transactions.</div></div>
+    <div class="comp-cell"><div class="comp-num">02</div><div class="comp-name">AI Enablement — Products &amp; Tools</div><div class="comp-desc">Deploying artificial intelligence responsibly across customer-facing products and internal engineering workflows. A consistent record of moving beyond AI strategy into measurable gains in productivity, quality, and speed-to-market.</div></div>
+    <div class="comp-cell"><div class="comp-num">03</div><div class="comp-name">High-Availability &amp; Resilient Systems</div><div class="comp-desc">Deep SRE expertise ensuring mission-critical infrastructure operates without failure at global scale. Operational frameworks where downtime is measured in fractions of a second.</div></div>
+    <div class="comp-cell"><div class="comp-num">04</div><div class="comp-name">Data Insights &amp; Analytics</div><div class="comp-desc">Designing data platforms that transform raw operational signals into actionable intelligence. Governance frameworks that make data trustworthy, accessible, and decision-ready — in real time, at enterprise scale.</div></div>
+    <div class="comp-cell"><div class="comp-num">05</div><div class="comp-name">Financial &amp; Risk Stewardship</div><div class="comp-desc">Proven management of multi-hundred-million-dollar CapEx/OpEx portfolios with transparent ROI reporting. Skilled at communicating risk-reward tradeoffs to CFOs, boards, and regulators.</div></div>
+    <div class="comp-cell"><div class="comp-num">06</div><div class="comp-name">Regulatory Compliance &amp; Security</div><div class="comp-desc">Two decades embedded in PCI-DSS, GDPR, and multi-jurisdictional compliance environments. Enterprise security postures built to withstand rigorous audits — without slowing the business down.</div></div>
+    <div class="comp-cell"><div class="comp-num">07</div><div class="comp-name">Culture, Talent &amp; Org Leadership</div><div class="comp-desc">Built high-performing engineering teams across three continents. Recognized for M&A cultural integration, leadership pipeline development, and creating environments where technical talent excels.</div></div>
+    <div class="comp-cell"><div class="comp-num">08</div><div class="comp-name">Legacy Modernization &amp; Build vs. Buy</div><div class="comp-desc">Disciplined evaluation of in-house development versus vendor partnership. Experience transitioning complex legacy systems with full stakeholder transparency at every stage.</div></div>
+    <div class="comp-cell"><div class="comp-num">09</div><div class="comp-name">M&amp;A Integration &amp; Change Leadership</div><div class="comp-desc">Multiple M&A integrations across global markets — from platform consolidation to cultural alignment. Creates clarity, accountability, and shared purpose through uncertainty.</div></div>
   </div>
 </section>
 
-<!-- ── INDUSTRY FIT ── -->
 <section id="industry">
-  <div class="section-label">Industry Fit</div>
-  <h2 class="section-title">Industries I'm<br><em>Built For</em></h2>
-  <div class="ameren-grid">
-    <div class="ameren-left">
-      <p>
-        St. Louis is not simply where I am based — it is <strong>where my family has put down roots</strong>, where my children are growing up, and where I am deeply invested in the economic vitality and infrastructure that powers this region. That rootedness shapes how I lead: with long-term commitment, not short-term ambition.
-      </p>
-      <p>
-        My entire career has been built inside one of the world's most demanding regulated environments — global payments. The industries I am best positioned to lead share a common DNA with that experience: <strong>high-availability infrastructure where failure is not an option</strong>, stringent multi-jurisdictional compliance obligations, a customer base of millions who expect reliability as a baseline and digital innovation as a differentiator, and federated organizational complexity that requires both central discipline and business-unit autonomy.
-      </p>
-      <p>
-        Whether the mission-critical system is a payment network, an energy grid, a healthcare platform, or a financial exchange — the leadership principles are the same. <strong>Build for resilience. Modernize without disruption. Invest with transparency. Develop the people who make it all run.</strong>
-      </p>
-      <div class="gold-rule"></div>
-      <p style="font-style:italic; color:var(--faint);">The next chapter of my career is about bringing two decades of regulated-industry technology leadership to an organization where reliability, innovation, and community impact converge at scale.</p>
+  <div class="sec-eyebrow">Industry Fit</div>
+  <h2 class="sec-title">Industries I'm<br><em>Built For</em></h2>
+  <div class="fit-cols">
+    <div class="fit-prose">
+      <p>St. Louis is not simply where I am based — it is <strong>where my family has put down roots</strong>, where my children are growing up, and where I am deeply invested in the economic vitality and infrastructure that powers this region.</p>
+      <p>My entire career has been built inside one of the world's most demanding regulated environments — global payments. The industries I am best positioned to lead share a common DNA: <strong>high-availability infrastructure where failure is not an option</strong>, stringent compliance obligations, a customer base that expects reliability and digital innovation, and federated complexity requiring both central discipline and business-unit autonomy.</p>
+      <p>Whether the mission-critical system is a payment network, an energy grid, a healthcare platform, or a financial exchange — the leadership principles are the same. <strong>Build for resilience. Modernize without disruption. Invest with transparency. Develop the people who make it all run.</strong></p>
+      <div class="pull-quote">The next chapter is about bringing two decades of regulated-industry technology leadership to an organization where reliability, innovation, and community impact converge at scale.</div>
     </div>
-    <div class="ameren-right">
-      <div class="fit-card">
-        <div class="fit-icon">⚡</div>
-        <div class="fit-content">
-          <strong>High-Transaction · High-Availability</strong>
-          <p>Built SRE frameworks for infrastructure processing billions of daily transactions. The operational discipline and culture required here transfers directly to any environment where downtime has real-world consequences.</p>
-        </div>
-      </div>
-      <div class="fit-card">
-        <div class="fit-icon">📊</div>
-        <div class="fit-content">
-          <strong>Regulated Industry Depth</strong>
-          <p>20 years navigating PCI-DSS, GDPR, and multi-jurisdictional compliance frameworks across four continents. I move fast without breaking the rules — and I know how to bring regulators and auditors along.</p>
-        </div>
-      </div>
-      <div class="fit-card">
-        <div class="fit-icon">🏗️</div>
-        <div class="fit-content">
-          <strong>Legacy Modernization at Scale</strong>
-          <p>Currently leading a 3-year platform transformation at Mastercard. Skilled at communicating build-vs-buy tradeoffs clearly to CFOs and boards — and executing without disrupting live operations.</p>
-        </div>
-      </div>
-      <div class="fit-card">
-        <div class="fit-icon">🤝</div>
-        <div class="fit-content">
-          <strong>Federated Multi-Division Leadership</strong>
-          <p>Managed technology across 48 business lines spanning digital, commercial, fintech, and payments. Deep experience distributing IT resources across business units while centralizing shared platforms.</p>
-        </div>
-      </div>
-      <div class="fit-card">
-        <div class="fit-icon">🏠</div>
-        <div class="fit-content">
-          <strong>St. Louis · Rooted · Long-Term</strong>
-          <p>A St. Louis-based executive with deep personal and professional ties to this region. Not evaluating options — committed to contributing to the infrastructure and institutions that define this community.</p>
-        </div>
-      </div>
+    <div class="fit-cards">
+      <div class="fit-row"><div class="fit-icon">⚡</div><div><strong>High-Transaction · High-Availability</strong><p>Built SRE frameworks for infrastructure processing billions of daily transactions. The operational discipline transfers directly to any environment where downtime has real-world consequences.</p></div></div>
+      <div class="fit-row"><div class="fit-icon">📊</div><div><strong>Regulated Industry Depth</strong><p>20 years navigating PCI-DSS, GDPR, and multi-jurisdictional compliance frameworks. Moving fast without breaking rules — and bringing regulators along.</p></div></div>
+      <div class="fit-row"><div class="fit-icon">🏗️</div><div><strong>Legacy Modernization at Scale</strong><p>Currently leading a 3-year platform transformation. Skilled at communicating build-vs-buy tradeoffs to CFOs and boards — then executing without disrupting live operations.</p></div></div>
+      <div class="fit-row"><div class="fit-icon">🤝</div><div><strong>Federated Multi-Division Leadership</strong><p>Managed technology across 48 business lines. Deep experience distributing IT resources across units while centralizing shared platforms.</p></div></div>
+      <div class="fit-row"><div class="fit-icon">🏠</div><div><strong>St. Louis · Rooted · Long-Term</strong><p>A St. Louis-based executive with deep personal and professional ties to this region — committed to the infrastructure and institutions that define this community.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- ── PATENTS ── -->
-<section id="patents" style="background:var(--navy); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
-  <div class="section-label">Innovation Record</div>
-  <h2 class="section-title">A Sustained Commitment<br>to <em>Frontier Technology</em></h2>
-  <div class="patents-layout">
+<section id="patents" style="background:var(--paper); border-top:1px solid var(--rule);">
+  <div class="sec-eyebrow">Innovation Record</div>
+  <h2 class="sec-title">A Sustained Commitment<br>to <em>Frontier Technology</em></h2>
+  <div class="patent-layout">
     <div class="patent-stat">
-      <div class="patent-num">10</div>
-      <div class="patent-label">U.S. Patents Granted</div>
-      <div class="patent-sub">+ 4 applications currently<br>under review</div>
+      <div class="pat-num">10</div>
+      <div class="pat-label">U.S. Patents Granted</div>
+      <div class="pat-sub">+ 4 applications under review</div>
     </div>
     <div class="patent-text">
-      <p>
-        A portfolio of <strong>10 granted U.S. patents</strong> — with 4 additional applications under active review at the U.S. Patent Office — reflects two decades of operating at the frontier of payments technology, digital infrastructure, and enterprise systems design.
-      </p>
-      <p>
-        These patents are not incidental credentials. They represent the habit of mind every great technology organization needs at the top: the ability to see problems others haven't named yet, and to build systems that solve them before they become crises. Innovation is not a department — it is a discipline that permeates every technology decision.
-      </p>
-      <a href="https://patents.google.com/?inventor=Venkata+Satya+Sivajee+Pinnamaneni" target="_blank" class="patent-link">
-        View Patent Portfolio ↗
-      </a>
+      <p>A portfolio of <strong>10 granted U.S. patents</strong> — with 4 additional applications under active review — reflects two decades of operating at the frontier of payments technology, digital infrastructure, and enterprise systems design.</p>
+      <p>These patents represent the habit of mind every great technology organization needs at the top: the ability to see problems others haven't named yet, and to build systems that solve them before they become crises. Innovation is not a department — it is a discipline that permeates every technology decision.</p>
+      <a href="https://patents.google.com/?inventor=Venkata+Satya+Sivajee+Pinnamaneni" target="_blank" class="pat-link">View Patent Portfolio ↗</a>
     </div>
   </div>
 </section>
 
-<!-- ── LEADERSHIP PHILOSOPHY ── -->
 <section id="philosophy">
-  <div class="section-label">Leadership Philosophy</div>
-  <h2 class="section-title">How I Lead.<br><em>How Teams Win.</em></h2>
-  <div class="philosophy-grid">
-    <div class="philosophy-card">
-      <div class="phil-number">01</div>
-      <div class="phil-title">Technology Serves the Business</div>
-      <div class="phil-body">Every architecture decision, every platform investment, every vendor negotiation begins and ends with a business outcome. I don't build technology for its own sake — I build capabilities that unlock revenue, reduce cost, and serve customers better.</div>
-    </div>
-    <div class="philosophy-card">
-      <div class="phil-number">02</div>
-      <div class="phil-title">Reliability Is Non-Negotiable</div>
-      <div class="phil-body">In critical infrastructure — whether a payment network, an energy system, or a financial exchange — failure has real-world consequences for real people. I have built operational cultures where reliability is the first principle, and where teams are measured, trained, and rewarded accordingly.</div>
-    </div>
-    <div class="philosophy-card">
-      <div class="phil-number">03</div>
-      <div class="phil-title">Transparency Builds Trust</div>
-      <div class="phil-body">Boards and CFOs don't need to understand every technical detail — but they deserve complete honesty about costs, risks, and tradeoffs. I communicate with clarity and conviction, and I never hide hard truths behind technical complexity.</div>
-    </div>
-    <div class="philosophy-card">
-      <div class="phil-number">04</div>
-      <div class="phil-title">People Are the Platform</div>
-      <div class="phil-body">The best technology strategy fails without the right people, culture, and leadership pipeline. I invest deeply in talent development, build environments where engineers do their best work, and treat succession planning as a strategic obligation — not an afterthought.</div>
-    </div>
+  <div class="sec-eyebrow">Leadership Philosophy</div>
+  <h2 class="sec-title">How I Lead.<br><em>How Organizations Win.</em></h2>
+  <div class="phil-grid">
+    <div class="phil-card"><div class="phil-n">01</div><div class="phil-title">Technology Is the Business</div><div class="phil-body">Technology doesn't support the strategy — it defines it. I build organizations where technology and business leadership are equal partners at the table, co-owning outcomes, not just enabling them.</div></div>
+    <div class="phil-card"><div class="phil-n">02</div><div class="phil-title">Resilience Is Non-Negotiable</div><div class="phil-body">In critical infrastructure — whether a payment network, an enterprise data platform, or an energy grid — failure has real-world consequences. I build cultures where resilience is the first principle, and teams are built to anticipate, absorb, and recover.</div></div>
+    <div class="phil-card"><div class="phil-n">03</div><div class="phil-title">Transparency Builds Trust</div><div class="phil-body">Boards and CFOs deserve complete honesty about costs, risks, and tradeoffs. I communicate with clarity and conviction, and I never hide hard truths behind technical complexity.</div></div>
+    <div class="phil-card"><div class="phil-n">04</div><div class="phil-title">The Right People Change Everything</div><div class="phil-body">No technology strategy survives contact with the wrong team. I invest in talent, develop leaders who thrive through ambiguity, and build succession pipelines that outlast any single initiative. The culture I build is the product I'm most proud of.</div></div>
   </div>
 </section>
 
-<!-- ── CONTACT ── -->
 <div id="contact">
-  <div class="contact-left">
-    <div class="cl-name">Venkata Pinnamaneni</div>
-    <div class="cl-title">Executive Vice President &amp; CTO, Mastercard · St. Louis, Missouri</div>
-    <div class="contact-items">
-      <div class="contact-item">
-        <span class="ci-label">Location</span>
-        <span>St. Louis, Missouri</span>
-      </div>
-      <div class="contact-item">
-        <span class="ci-label">Mobile</span>
-        <a href="tel:6367932696">636-793-2696</a>
-      </div>
-      <div class="contact-item">
-        <span class="ci-label">Email</span>
-        <a href="mailto:sivajee@gmail.com">sivajee@gmail.com</a>
-      </div>
-      <div class="contact-item">
-        <span class="ci-label">LinkedIn</span>
-        <a href="https://www.linkedin.com/in/venkata-pinnamaneni/" target="_blank">linkedin.com/in/venkata-pinnamaneni</a>
-      </div>
-      <div class="contact-item">
-        <span class="ci-label">Patents</span>
-        <a href="https://patents.google.com/?inventor=Venkata+Satya+Sivajee+Pinnamaneni" target="_blank">View 10 U.S. Patents ↗</a>
-      </div>
-    </div>
+  <div>
+    <div class="cf-name">Venkata Pinnamaneni</div>
+    <div class="cf-title">Executive Vice President &amp; CTO, Mastercard · St. Louis, Missouri</div>
+    <div class="cf-row"><span class="lbl">Location</span><span>St. Louis, Missouri</span></div>
+    <div class="cf-row"><span class="lbl">Mobile</span><a href="tel:6367932696">636-793-2696</a></div>
+    <div class="cf-row"><span class="lbl">Email</span><a href="mailto:sivajee@gmail.com">sivajee@gmail.com</a></div>
+    <div class="cf-row"><span class="lbl">LinkedIn</span><a href="https://linkedin.com/in/venkata-pinnamaneni" target="_blank">linkedin.com/in/venkata-pinnamaneni</a></div>
+    <div class="cf-row"><span class="lbl">Patents</span><a href="https://patents.google.com/?inventor=Venkata+Satya+Sivajee+Pinnamaneni" target="_blank">View 10 U.S. Patents ↗</a></div>
   </div>
-  <div class="contact-right">
-    <div class="watermark">VP</div>
-    <div class="tagline">Mastercard · 20 Years · St. Louis · 10 Patents</div>
+  <div class="cf-right">
+    <div class="cf-wm">VP</div>
+    <div class="cf-tag">Mastercard · 20 Years · St. Louis · 10 Patents</div>
   </div>
 </div>
 
 <script>
-  // ── COUNTER ANIMATION ──
-  function animateCount(el) {
-    const target = parseInt(el.dataset.target);
-    const prefix = el.dataset.prefix || '';
-    const suffix = el.dataset.suffix || '';
-    const duration = 1800;
-    const start = performance.now();
-    function update(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(eased * target);
-      el.textContent = prefix + current + suffix;
-      if (progress < 1) requestAnimationFrame(update);
-    }
-    requestAnimationFrame(update);
-  }
-
-  // ── INTERSECTION OBSERVER ──
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        // Trigger counters
-        if (entry.target.classList.contains('count')) {
-          animateCount(entry.target);
-          observer.unobserve(entry.target);
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        if (e.target.classList.contains('count')) {
+          const el = e.target, target = parseInt(el.dataset.target);
+          const prefix = el.dataset.prefix||'', suffix = el.dataset.suffix||'';
+          const dur = 1600, start = performance.now();
+          function tick(now) {
+            const p = Math.min((now-start)/dur,1), ep = 1-Math.pow(1-p,3);
+            el.textContent = prefix+Math.round(ep*target)+suffix;
+            if(p<1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+          observer.unobserve(el);
         }
       }
     });
   }, { threshold: 0.15 });
-
-  // Observe counters
-  document.querySelectorAll('.count').forEach(el => observer.observe(el));
-
-  // Observe animated elements
-  document.querySelectorAll('.tl-item, .comp-card, .fit-card, .philosophy-card').forEach((el, i) => {
-    el.style.transitionDelay = `${i * 0.07}s`;
+  document.querySelectorAll('.count, .tl-item, .comp-cell, .fit-row, .phil-card').forEach((el,i) => {
+    el.style.transitionDelay = `${i * 0.06}s`;
     observer.observe(el);
   });
-
-  // ── SMOOTH NAV HIGHLIGHT ──
-  const sections = document.querySelectorAll('section[id], div[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navLinks.forEach(a => {
-          a.style.color = a.getAttribute('href') === '#' + e.target.id
-            ? 'var(--gold)' : '';
-        });
-      }
-    });
-  }, { threshold: 0.4 });
-  sections.forEach(s => io.observe(s));
 </script>
 </body>
 </html>
